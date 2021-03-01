@@ -1,10 +1,10 @@
-import { createContext, useContext, useReducer } from "react"
+import { createContext, useReducer } from "react"
 import {v4} from "uuid"
 
 import {ADD_TODO, REMOVE_TODO} from "types"
 
-const GlobalStateContext = createContext([])
-const GlobalDispatchContext = createContext()
+export const GlobalStateContext = createContext([])
+export const GlobalDispatchContext = createContext()
 
 const task = {
   id: '',
@@ -13,7 +13,7 @@ const task = {
   collection: ''
 }
 
-const reducer = (action, state) => {
+const reducer = (state,action) => {
     switch (action.type){
       case ADD_TODO:
         return [
@@ -24,8 +24,10 @@ const reducer = (action, state) => {
             name: action.payload
           }
         ]
+	break;
       case REMOVE_TODO:
         return state.filter(item => item.id !== action.payload)
+	break;
       default :
         return new Error(`Invalid action ${action.type}`)
       }
@@ -43,6 +45,3 @@ export const GlobalProvider = ({children}) => {
     </GlobalDispatchContext.Provider>
   )
 }
-
-export const useGlobalStateContext = () => useContext(GlobalStateContext)
-export const useGlobalDispatchContext =  () => useContext(GlobalDispatchContext)
