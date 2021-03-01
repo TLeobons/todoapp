@@ -20,7 +20,7 @@ function App() {
     switch (action.type){
       case ADD_TODO:
         return [
-          state,
+          ...state,
           {
             ...task,
             id: v4(),
@@ -49,7 +49,8 @@ function App() {
         <input
         value={todo}
         onChange={e=>setTodo(e.target.value)}/>
-        {state.map(task => (
+
+        {(state || []).map(task => (
           <div key={task.id}>
             <span>{task.name}</span>
             <button onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>X</button>
