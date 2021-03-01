@@ -1,64 +1,59 @@
-import { useState, useReducer } from "react"
+import {useState, useReducer} from "react"
 import {v4} from "uuid"
 
 import {ADD_TODO, REMOVE_TODO} from './types'
 import './App.css'
 
-function App() {
-
-  const task = {
+const initialState = [];
+const task = {
     id: '',
     name: '',
     done: false,
     collection: ''
-  }
+}
 
-  const [todo, setTodo] = useState('')
+function reducer(state, action) {
+    console.log(action)
+    switch (action.type) {
+        case ADD_TODO:
+            return [...state, {...action.payload}]
+        default:
+            throw new Error();
+    }
+}
 
-  const onlyReducer = (state, action) => {
-    console.log('state', state)
-    switch (action.type){
-      case ADD_TODO:
-        return [
-          ...state,
-          {
+function App() {
+
+    const [todo, setTodo] = useState('')
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const item = state;
+    const  handleSubmit = e => {
+        e.preventDefault()
+        let todoIten = {
             ...task,
             id: v4(),
-            name: action.payload
-          }
-        ]
-        case REMOVE_TODO:
-          // state.map()
-          return {
-          }
-      default :
-        return state
+            name: todo
+        }
+        dispatch({type: ADD_TODO, payload: todoIten})
+        console.log(state)
     }
-  }
 
-  const [state, dispatch] = useReducer(onlyReducer, [])
+    return (
+        <div className="App">
+            <form onSubmit={handleSubmit}>
+                <input
+                    value={todo}
+                    onChange={e => setTodo(e.target.value)}/>
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    dispatch({type: 'ADD_TODO', payload: todo})
-  }
+                {item && item.map(task => (
+                    <div key={task.id}>
+                        <span>{task.name}</span>
 
-  return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input
-        value={todo}
-        onChange={e=>setTodo(e.target.value)}/>
-
-        {(state || []).map(task => (
-          <div key={task.id}>
-            <span>{task.name}</span>
-            <button onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>X</button>
-          </div>
-        ))}
-      </form>
-    </div>
-  );
+                    </div>
+                ))}
+            </form>
+        </div>
+    );
 }
 
 export default App
