@@ -1,40 +1,61 @@
 import { useState, useReducer } from "react"
-import uuid from "uudid"
+import {v4} from "uuid"
+
+import {ADD_TODO, REMOVE_TODO} from './types'
 import './App.css'
 
 function App() {
 
   const task = {
+    id: '',
     name: '',
     done: false,
     collection: ''
   }
 
-  const [tasks, setTasks] = useState([])
+  const [todo, setTodo] = useState('')
 
   const onlyReducer = (state, action) => {
+    console.log('state', state)
     switch (action.type){
-      case 'ADD_TODO':
-        return {
+      case ADD_TODO:
+        return [
           state,
-          id: uuid.v4(),
-        }
+          {
+            ...task,
+            id: v4(),
+            name: action.payload
+          }
+        ]
+        case REMOVE_TODO:
+          // state.map()
+          return {
+          }
       default :
         return state
     }
   }
 
-  const [state, dispatch] = useReducer(onlyReducer, task)
+  const [state, dispatch] = useReducer(onlyReducer, [])
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    dispatch({type: 'ADD_TODO', payload: todo})
+  }
 
   return (
     <div className="App">
-      <input onChange={e => dispatch({type: 'ADD_TODO', payload: e.target.value})}/>
-      {tasks.map(task => (
-        <div key={task.id}>
-          <span>{task.name}</span>
-          <button onClick={dispatch({type: 'ADD_TODO', payload: task.id})}>X</button>
-        </div>
-      ))}
+      <form onSubmit={handleSubmit}>
+        <input
+        value={todo}
+        onChange={e=>setTodo(e.target.value)}/>
+        {state.map(task => (
+          <div key={task.id}>
+            <span>{task.name}</span>
+            <button onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>X</button>
+          </div>
+        ))}
+      </form>
     </div>
   );
 }
