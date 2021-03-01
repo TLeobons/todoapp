@@ -33,7 +33,6 @@ const reducer = (state,action) => {
       }
     }
 
-
 export const GlobalProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, [])
 

@@ -1,11 +1,16 @@
-import React from 'react'
+import styled from 'styled-components'
 
 const Navbar = () => {
   return (
-    <nav>
+    <Nav>
       
-    </nav>
+    </Nav>
   )
 }
 
 export default Navbar
+
+const Nav = styled.nav`
+  height: 5vh;
+  background-color: purple;
+`
