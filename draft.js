@@ -2,7 +2,7 @@ import { useState, useReducer } from "react"
 import {v4} from "uuid"
 
 import {ADD_TODO, REMOVE_TODO} from './types'
-import Input from 'components/common/input'
+import './App.css'
 
 function App() {
 
@@ -12,6 +12,8 @@ function App() {
     done: false,
     collection: ''
   }
+
+  const [todo, setTodo] = useState('')
 
   const onlyReducer = (state, action) => {
     switch (action.type){
@@ -25,7 +27,8 @@ function App() {
           }
         ]
       case REMOVE_TODO:
-        return state.filter(item => item.id !== action.payload)
+        let filterArray = state.filter(item => item.id !== action.payload)
+        return [...filterArray]
       default :
         return new Error(`Invalid action ${action.type}`)
       }
@@ -43,18 +46,14 @@ function App() {
     <div className="App">
     {console.log('state', state)}
       <form onSubmit={handleSubmit}>
-        <Input
+        <input
         value={todo}
-        handleChange={e=>setTodo(e.target.value)}/>
+        onChange={e=>setTodo(e.target.value)}/>
 
         {state.map(task => (
           <div key={task.id}>
             <span>{task.name}</span>
-            <button
-              type='button'
-              onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>
-              X
-            </button>
+            <button onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>X</button>
           </div>
         ))}
       </form>
