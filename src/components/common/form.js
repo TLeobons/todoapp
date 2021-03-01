@@ -17,17 +17,20 @@ const Form = () => {
 	useMemo(()=>console.log(state),[state]);
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form id="todo-form" className={`frame frame-${state.theme ? 'dark':'light'}`} onSubmit={handleSubmit}>
 			<Input
 				value={todo}
 				handleChange={setTodo}
+				placeholder="Input Task..."
 			/>
-			{state.map(task => (
+			{state.tasks.map(task => (
 				<div key={task.id}>
 					<span>{task.name}</span>
 					<button
 						type='button'
-						onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>
+						onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}
+						className={`btn ${state.theme ? 'btn-dark' : 'btn-light'}`}
+					>
 						X
 					</button>
 				</div>
