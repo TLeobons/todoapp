@@ -1,4 +1,4 @@
-import Form from 'components/common/Form'
+import Form from 'components/common/form'
 import Navbar from 'components/Navbar'
 
 const App = () => {
