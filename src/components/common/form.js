@@ -1,37 +1,22 @@
 import {useState} from 'react'
 
-import { Input } from "./input"
+import { useGlobalDispatchContext } from '../../context/globalContext'
 
-const Form = () => {
+const Form = ({children}) => {
+
+  const dispatch = useGlobalDispatchContext()
 
   const [value, setValue] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault()
     dispatch({type: 'ADD_TODO', payload: todo})
-    setTodo('')
+    // setTodo('')
   }
-
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input/>
-      <form onSubmit={handleSubmit}>
-        <Input
-        value={todo}
-        handleChange={e=>setTodo(e.target.value)}/>
-
-        {state.map(task => (
-          <div key={task.id}>
-            <span>{task.name}</span>
-            <button
-              type='button'
-              onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>
-              X
-            </button>
-          </div>
-        ))}
-      </form>
+      {children}    
     </form>
   )
 }

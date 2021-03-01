@@ -62,3 +62,18 @@ function App() {
 }
 
 export default App
+
+<Input
+        value={todo}
+        handleChange={e=>setTodo(e.target.value)}/>
+
+        {state.map(task => (
+          <div key={task.id}>
+            <span>{task.name}</span>
+            <button
+              type='button'
+              onClick={() => dispatch({type: 'REMOVE_TODO', payload: task.id})}>
+              X
+            </button>
+          </div>
+        ))}
