@@ -1,7 +1,7 @@
-import Form from 'components/common/form'
-import Navbar from 'components/Navbar'
+import Footer from 'components/footer'
+import Home from 'components/home'
+import Navbar from 'components/navbar'
 import GlobalStyle from 'theme/global'
-
 
 const App = () => {
       
@@ -9,7 +9,8 @@ const App = () => {
     <div className="App">
       <GlobalStyle/>
       <Navbar/>
-      <Form/>
+      <Home />
+      <Footer/>
     </div>
   )
 }

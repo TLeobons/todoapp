@@ -1,7 +1,7 @@
 import {useState, useContext, useMemo} from 'react'
 
 import Input  from "./input";
-import {GlobalStateContext, GlobalDispatchContext} from 'context/globalContext';
+import {GlobalStateContext, GlobalDispatchContext} from 'context/globalContext'
 
 const Form = () => {
 	

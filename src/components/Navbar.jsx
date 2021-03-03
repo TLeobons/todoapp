@@ -1,12 +1,16 @@
 import { useState } from "react"
+import { BrowserRouter as Router, Link, NavLink, Switch, Route, Redirect } from "react-router-dom"
 import styled from 'styled-components'
-import { BrowserRouter as Router, Link, NavLink, Switch, Route } from "react-router-dom"
+
 import Home from "./home"
 import Data from "./data"
 import Images from "./images"
 import Todos from "./todos"
 import Contact from "./contact"
 import Login from "./login"
+import Weather from './weather'
+import NotFound from './notFound'
+import Blog from "./blog"
 
 const Navbar = () => {
 
@@ -16,7 +20,11 @@ const Navbar = () => {
     <Router>
       <Nav>
         <ul>
-          <MenuItem><StyledLink to="/">home</StyledLink></MenuItem>
+          <MenuItem>
+            <StyledLink to="/">
+              home
+            </StyledLink>
+          </MenuItem>
         </ul>
         <ul>
           <MenuItem><StyledNavLink to="/data">data</StyledNavLink></MenuItem>
@@ -28,6 +36,12 @@ const Navbar = () => {
           <MenuItem><StyledNavLink to="/todos">todos</StyledNavLink></MenuItem>
         </ul>
         <ul>
+          <MenuItem><StyledNavLink to="/weather">weather</StyledNavLink></MenuItem>
+        </ul>
+        <ul>
+          <MenuItem><StyledNavLink to="/blog">blog</StyledNavLink></MenuItem>
+        </ul>
+        <ul>
           <MenuItem><StyledNavLink to="/contact">contact</StyledNavLink></MenuItem>
         </ul>
         <ul>
@@ -35,24 +49,16 @@ const Navbar = () => {
         </ul>     
       </Nav>
       <Switch>
-        <Route path='/data'>
-          <Data/>
-        </Route>
-        <Route path='/images'>
-          <Images/>
-        </Route>
-        <Route path='/todos'>
-          <Todos/>
-        </Route>
-        <Route path='/contact'>
-          <Contact/>
-        </Route>
-        <Route path='/login'>
-          <Login/>
-        </Route>
-        <Route path='/'>
-          <Home/>
-        </Route>
+        <Route path='/data' component={Data}/>
+        <Route path='/images' component={Images}/>
+        <Route path='/todos' component={Todos}/>
+        <Route path='/weather' component={Weather}/>
+        <Route path='/blog' component={Blog}/>
+        <Route path='/contact' component={Contact}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/404' component={NotFound}/>
+        <Route path='/' exact component={Home}/>
+        <Redirect to="/404" component={NotFound}/>
       </Switch>
     </Router>
   )
@@ -61,8 +67,8 @@ const Navbar = () => {
 export default Navbar
 
 const Nav = styled.nav`
-  height: 5vh;
-  background-color: purple;
+  height: 8vh;
+  background-color: rebeccapurple;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -72,4 +78,12 @@ const Nav = styled.nav`
 const MenuItem = styled.li`
   padding: 0.75em;
 `
-const StyledLink = styled.Li
+const StyledLink = styled(Link)`
+  color: white;
+`
+const StyledNavLink = styled(NavLink)`
+  color: pink;
+  &.active {
+    color: yellow;
+  }
+`
