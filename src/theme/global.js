@@ -15,5 +15,7 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 `
+export const lightTheme = null
+export const darkTheme = null
 
 export default GlobalStyle
