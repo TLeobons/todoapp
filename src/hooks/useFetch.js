@@ -1,8 +1,7 @@
-import {useState} from 'react'
 import axios from 'axios'
 
 import { searchURL, paramsData } from 'configs/apiData'
-import {useGlobalDispatchContext} from "../context/globalContext"
+import {useGlobalDispatchContext} from "context/globalContext"
 
 const useFetch = () => {
 
@@ -19,7 +18,7 @@ const useFetch = () => {
         }
       })
       results = data.results
-      if (length === 0) dispatch({type:'ERROR_LOADING', error: 'no images found'})
+      if (results.length === 0) dispatch({type:'ERROR_LOADING', error: 'no images found'})
 
       dispatch({type:'IMAGE_LOADED',loadedImages: results})
     }

@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
-import {ThemeProvider} from 'styled-components'
+// import {ThemeProvider} from 'styled-components'
 
 import Home from "components/home"
 import Data from "components/data"
@@ -13,20 +13,20 @@ import Weather from 'components/weather'
 import NotFound from 'components/notFound'
 import Blog from "components/blog"
 import GlobalStyle from 'theme/global'
-import {lightTheme, darkTheme} from 'theme/global'
+// import {lightTheme, darkTheme} from 'theme/global'
 import Layout from 'components/layout'
 
 const App = () => {
 
   const [theme, setTheme] = useState('light')
 
-  const toggleTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
+  // const toggleTheme = () => {
+  //   theme === 'light' ? setTheme('dark') : setTheme('light')
+  // }
       
   return (
     <div className="App">
-      <ThemeProvider value={theme === 'light' ? lightTheme : darkTheme}>
+      {/* <ThemeProvider value={theme === 'light' ? lightTheme : darkTheme}> */}
         <GlobalStyle/>
         <Layout>
           <Switch>
@@ -42,8 +42,8 @@ const App = () => {
             <Redirect to="/404" component={NotFound}/>
           </Switch>
         </Layout>
-        <button onClick={toggleTheme}>Toggle theme</button>
-      </ThemeProvider>
+        {/* <button onClick={toggleTheme}>Toggle theme</button> */}
+      {/* </ThemeProvider> */}
     </div>
   )
 }

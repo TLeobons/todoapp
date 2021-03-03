@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react"
+import { createContext, useReducer, useContext } from "react"
 import {v4} from "uuid"
 
 import {ADD_TODO, REMOVE_TODO} from "types"
@@ -42,4 +42,6 @@ export const GlobalProvider = ({children}) => {
       </GlobalStateContext.Provider>
     </GlobalDispatchContext.Provider>
   )
+  // const useGlobalDispatchContext = useContext(GlobalDispatchContext)
+  // const useGlobalStateContext = useContext(GlobalStateContext)
 }
