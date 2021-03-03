@@ -1,11 +1,12 @@
+import {useContext} from 'react'
 import axios from 'axios'
 
-import { searchURL, paramsData } from 'configs/apiData'
-import {useGlobalDispatchContext} from "context/globalContext"
+import { searchURL, paramsData } from 'config/apiData'
+import {GlobalDispatchContext} from "context/globalContext"
 
 const useFetch = () => {
 
-  const dispatch = useGlobalDispatchContext()
+  const dispatch = useContext(GlobalDispatchContext)
   
   const fetchData = async searchTerm => {
     let results

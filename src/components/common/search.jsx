@@ -29,7 +29,6 @@ const Search = () => {
         onChange={handleChange}
         value={term}
       />
-      \
     </div>
 }
 
