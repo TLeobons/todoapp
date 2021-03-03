@@ -24,10 +24,8 @@ const reducer = (state,action) => {
             name: action.payload
           }
         ]
-	break;
       case REMOVE_TODO:
         return state.filter(item => item.id !== action.payload)
-	break;
       default :
         return new Error(`Invalid action ${action.type}`)
       }
