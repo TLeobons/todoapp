@@ -17,7 +17,7 @@ const Layout = ({children}) => {
 export default Layout
 
 const Body = styled.body`
-`
+` 
 
 const Main = styled.main`
   height: 92vh;
