@@ -16,7 +16,7 @@ import { lightTheme, darkTheme } from 'theme/global';
 import Layout from 'components/layout';
 
 const App = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   // const toggleTheme = () => {
   //   theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -26,8 +26,9 @@ const App = () => {
     <div className="App">
       <button
         onClick={() => {
-          setTheme(theme === 'light' ? 'dark' : 'light');
-          console.log(theme);
+          const newTheme = theme === 'light' ? 'dark' : 'light';
+          localStorage.setItem('theme', newTheme);
+          setTheme(newTheme);
         }}
       >
         toggle theme
