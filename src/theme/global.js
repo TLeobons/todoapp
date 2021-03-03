@@ -15,7 +15,11 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 `
-export const lightTheme = null
-export const darkTheme = null
+export const lightTheme = {
+  background: "#fff"
+}
+export const darkTheme = {
+  background: "#ccc"
+}
 
 export default GlobalStyle

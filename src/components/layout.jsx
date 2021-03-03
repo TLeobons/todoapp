@@ -9,7 +9,7 @@ const Layout = ({children}) => {
       <Main>
         {children}
       </Main>
-     <Footer/> 
+     <Footer/>
     </Body>
   )
 }
@@ -21,4 +21,5 @@ const Body = styled.body`
 
 const Main = styled.main`
   height: 92vh;
+  background: ${props => props.theme.background};
 `
