@@ -1,15 +1,27 @@
-import Search from "./common/search"
+import { useState } from "react";
 import styled from 'styled-components'
 
-const Images = () => {
+import Search from "./common/search"
+import ResultGrid from './resultGrid'
+
+const ImagesPage = () => {
+
+  const [results, setResults] = useState([])
+
+  const handleSearch = data => {
+    setResults(data)
+  }
+
   return (
     <Container>
-      <Search/>
+      <Search onSearch={handleSearch}/>
+      <ResultGrid data={results}
+      />
     </Container>
   )
 }
 
-export default Images
+export default ImagesPage
 
 const Container = styled.section`
   display: flex;

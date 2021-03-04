@@ -1,47 +1,29 @@
-import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import styled from 'styled-components'
 
 import GithubLogo from 'assets/github.svg'
+import {menuItems} from 'config/layout'
+import ThemeToggle from "components/themeToggle"
 
 const Navbar = () => {
 
-  const [menu, setMenu] = useState(['home', 'data', 'images', 'todos','contact', 'login'])
-
   return (
       <Nav>
-      <Left>
-        <ul>
-          <MenuItem>
-            <StyledLink to="/">
-              home
-            </StyledLink>
-          </MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/data">data</StyledNavLink></MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/images">images</StyledNavLink></MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/todos">todos</StyledNavLink></MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/weather">weather</StyledNavLink></MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/blog">blog</StyledNavLink></MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/contact">contact</StyledNavLink></MenuItem>
-        </ul>
-        <ul>
-          <MenuItem><StyledNavLink to="/login">login</StyledNavLink></MenuItem>
-        </ul>
+        <Left>
+            <MenuItem><StyledLink to="/">home</StyledLink></MenuItem>
+            {menuItems.map(item => (
+              <MenuItem>
+                <StyledNavLink to= { `/${item.path}`}>{item.item}</StyledNavLink>
+              </MenuItem>
+            ))}
         </Left>
+
+        <ThemeToggle/>
+
         <div className="right">
-        {/* <GithubLogo/> */}
+          <a href='https://www.github.com/TLeobons'>
+            <img src={GithubLogo} alt='' height="40px" style={{paddingRight: '30px'}}/>
+          </a>
         </div>
       </Nav>
   )
@@ -51,7 +33,7 @@ export default Navbar
 
 const Nav = styled.nav`
   height: 8vh;
-  background-color: rebeccapurple;
+  background-color: ${props => props.theme.navbarBackground};
   position: fixed;
   width: 100%;
   display: flex;
@@ -60,14 +42,14 @@ const Nav = styled.nav`
   font-size: 1.5rem;
   color: white;
 `
-const Left = styled.div`
+const Left = styled.ul`
   display: flex;
 `
 const MenuItem = styled.li`
   padding: 0.75em;
 `
 const StyledLink = styled(Link)`
-  color: white;
+  /* color: white; */
 `
 const StyledNavLink = styled(NavLink)`
   color: pink;

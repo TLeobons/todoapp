@@ -24,6 +24,7 @@ const Search = () => {
 
       <label for='search'/>
       <input
+        autoFocus
         id='search'
         type="search"
         onChange={handleChange}

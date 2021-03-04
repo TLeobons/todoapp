@@ -20,7 +20,7 @@ const Body = styled.body`
 ` 
 
 const Main = styled.main`
-  height: 92vh;
+  height: 98vh;
   background: ${props => props.theme.background};
-  padding-top: 76px;
+  padding-top: 86px;
 `

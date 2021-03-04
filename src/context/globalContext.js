@@ -42,6 +42,4 @@ export const GlobalProvider = ({children}) => {
       </GlobalStateContext.Provider>
     </GlobalDispatchContext.Provider>
   )
-  // const useGlobalDispatchContext = useContext(GlobalDispatchContext)
-  // const useGlobalStateContext = useContext(GlobalStateContext)
 }
