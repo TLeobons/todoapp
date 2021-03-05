@@ -16,7 +16,7 @@ const Layout = ({children}) => {
 
 export default Layout
 
-const Body = styled.body`
+const Body = styled.section`
 ` 
 
 const Main = styled.main`

@@ -1,14 +1,14 @@
 import {useState, useContext, useMemo} from 'react'
 
 import Input  from "./input"
-import {GlobalStateContext, GlobalDispatchContext} from 'context/globalContext'
+import {GlobalStateContext, GlobalDispatchContext} from 'context/todoStore'
 
 const Form = () => {
 	
   const [todo, setTodo] = useState('')
 	const dispatch = useContext(GlobalDispatchContext)
 	const state = useContext(GlobalStateContext)
-	
+
   const handleSubmit = e => {
     e.preventDefault()
     dispatch({type: 'ADD_TODO', payload: todo})

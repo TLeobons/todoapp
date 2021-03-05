@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const ResultGrid = ({data}) => {
   return (
     <div >
-      {console.log(data)}
+      {console.log('images', data)}
       {data&&data.map(item => (
         <Image
           key={item.id}

@@ -6,7 +6,7 @@ import { ThemeContext } from "context/themeStore";
 const ThemeToggle = () => {
 
   const {toggleTheme} = useContext(ThemeContext)
-  const toggleRef = useRef()
+  const toggleRef = useRef(null)
 
   const handleToggle = e => {
     localStorage.setItem('dark-mode-toggle', toggleRef.current.checked)

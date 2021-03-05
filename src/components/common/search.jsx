@@ -22,7 +22,7 @@ const Search = () => {
 
   return <div className="Search">
 
-      <label for='search'/>
+      <label htmlFor='search'/>
       <input
         autoFocus
         id='search'

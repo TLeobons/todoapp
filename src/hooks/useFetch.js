@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import axios from 'axios'
 
 import { searchURL, paramsData } from 'config/apiData'
-import {GlobalDispatchContext} from "context/globalContext"
+import {GlobalDispatchContext} from "context/todoStore"
 
 const useFetch = () => {
 

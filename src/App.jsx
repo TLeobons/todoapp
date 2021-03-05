@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
@@ -36,8 +36,8 @@ const App = () => {
         <GlobalStyle />
         <Layout>
           <Switch>
-            {menuItems.map(item => (
-              <Route path={`/${item.path}`} component={mapping[item.item]} />
+            {menuItems.map((item, i) => (
+              <Route key={i} path={`/${item.path}`} component={mapping[item.item]} />
 
             ))}
             <Route path="/404" component={NotFound} />

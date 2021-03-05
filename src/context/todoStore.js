@@ -1,10 +1,9 @@
-import { createContext, useReducer, useContext } from "react"
+import { createContext, useReducer } from "react"
 import {v4} from "uuid"
 
 import {ADD_TODO, REMOVE_TODO} from "types"
 
-export const GlobalStateContext = createContext([])
-export const GlobalDispatchContext = createContext()
+export const TodosContext = createContext()
 
 const task = {
   id: '',
@@ -32,14 +31,12 @@ const reducer = (state,action) => {
     }
 
 
-export const GlobalProvider = ({children}) => {
+export const TodoStore = ({children}) => {
   const [state, dispatch] = useReducer(reducer, [])
 
   return(
-    <GlobalDispatchContext.Provider value={dispatch}>
-      <GlobalStateContext.Provider value={state}>
+    <TodosContext.Provider value={{state, dispatch}}>
         {children}
-      </GlobalStateContext.Provider>
-    </GlobalDispatchContext.Provider>
+    </TodosContext.Provider>
   )
 }

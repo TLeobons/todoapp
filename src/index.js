@@ -1,16 +1,16 @@
 import ReactDOM from 'react-dom'
 
 import App from 'App'
-import { GlobalProvider } from 'context/globalContext'
+import { TodoStore } from 'context/todoStore'
 import {ThemeStore} from 'context/themeStore'
 import {BrowserRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
   <Router>
     <ThemeStore>
-      <GlobalProvider>
+      <TodoStore>
         <App />
-      </GlobalProvider>
+      </TodoStore>
     </ThemeStore>
   </Router>,
   document.getElementById('root')

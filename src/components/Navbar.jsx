@@ -11,8 +11,8 @@ const Navbar = () => {
       <Nav>
         <Left>
             <MenuItem><StyledLink to="/">home</StyledLink></MenuItem>
-            {menuItems.map(item => (
-              <MenuItem>
+            {menuItems.map((item, i) => (
+              <MenuItem key={i}>
                 <StyledNavLink to= { `/${item.path}`}>{item.item}</StyledNavLink>
               </MenuItem>
             ))}

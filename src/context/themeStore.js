@@ -1,11 +1,9 @@
 import { createContext, useState } from "react"
-// import light from 'theme'
 
 const ThemeContext = createContext()
 
 const ThemeStore = ({children}) => {
 
-  // const [theme, settheme] = useState()
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
   const toggleTheme = theme => {
