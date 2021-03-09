@@ -15,8 +15,7 @@ const ImagesPage = () => {
   return (
     <Container>
       <Search onSearch={handleSearch}/>
-      <ResultGrid data={results}
-      />
+      <ResultGrid data={results}/>
     </Container>
   )
 }

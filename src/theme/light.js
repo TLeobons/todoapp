@@ -1,8 +1,8 @@
-const primary = '#663399'
+const primaryLight = '#663399'
 
 export const lightTheme = {
   background: "#fff",
-  navbarBackground: primary
+  navbarBackground: primaryLight
 }
 
 export default lightTheme

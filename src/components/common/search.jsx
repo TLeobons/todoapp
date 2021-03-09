@@ -26,7 +26,7 @@ const Search = () => {
       <input
         autoFocus
         id='search'
-        type="search"
+        type='search'
         onChange={handleChange}
         value={term}
       />

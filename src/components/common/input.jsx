@@ -13,6 +13,7 @@ const Input = ({id, handleChange, label = id, value='', type='text', ...inputPro
         value={value}
         type={type}
         onChange={e=>handleChange(e.target.value)}
+        maxlength={100}
         {...inputProps}
       />
     </div>

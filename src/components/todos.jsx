@@ -1,13 +1,15 @@
 import { useContext } from "react"
 import { todo } from "context/todoStore";
 
-const  = useContext();
 
 const Todos = () => {
+
+  const todos = useContext()
+  
   return (
     <div>
       <input
-        value={}
+        value={todos}/>
     </div>
   )
 }

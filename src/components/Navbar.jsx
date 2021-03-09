@@ -39,14 +39,14 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   color: white;
 `
 const Left = styled.ul`
   display: flex;
 `
 const MenuItem = styled.li`
-  padding: 0.75em;
+  padding: 2rem;
 `
 const StyledLink = styled(Link)`
   /* color: white; */
